@@ -11,9 +11,20 @@
     "fundamental-react",
     "fiori"
   ],
-  "author": "valentin.huber@msg.group",
+  "author": {
+    "name": "Valentin Huber",
+    "email": "valentin.huber@msg.group"
+  },
   "license": "MIT",
   "dependencies": {
     "yeoman-generator": "^4.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huberv/generator-fundamental-react-app.git"
+  },
+  "homepage": "https://github.com/huberv/generator-fundamental-react-app/",
+  "bugs": {
+    "url": "https://github.com/huberv/generator-fundamental-react-app/issues"
   }
 }
