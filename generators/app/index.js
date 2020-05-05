@@ -9,6 +9,12 @@ module.exports = class extends Generator {
                 type: "input",
                 message: "Human-readable app name (e.g. for page title)",
                 default: this.appname
+            },
+			{
+                name: "useTypescript",
+                type: "confirm",
+                message: "Would you like to use Typescript?",
+                default: true
             }
         ]);
     }
@@ -22,7 +28,15 @@ module.exports = class extends Generator {
 
         this._copy("index.js", "src/index.js");
         this._copy("index.css", "src/index.css");
-        this._copy("app.jsx", "src/app.jsx");
+		
+		if (this.answers.useTypescript) {
+			this._copy("app.tsx", "src/app.tsx");
+			this._copy("tsconfig.json", "tsconfig.json");
+		} else {
+			this._copy("app.jsx", "src/app.jsx");
+			this._copy("app.jsx", "src/app.jsx");
+		}
+		
         this._copy("themesReadme.md", "themes/Readme.md");
         this._copy("_gitignore", ".gitignore");
         this._copy("README.md", "README.md");
