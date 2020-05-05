@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         this._copy("index.css", "src/index.css");
         this._copy("app.jsx", "src/app.jsx");
         this._copy("themesReadme.md", "themes/Readme.md");
-        this._copy(".gitignore", ".gitignore");
+        this._copy("_gitignore", ".gitignore");
         this._copy("README.md", "README.md");
         this._copy("settings.json", ".vscode/settings.json");
 
