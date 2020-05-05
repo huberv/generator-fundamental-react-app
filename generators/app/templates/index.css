@@ -1,0 +1,43 @@
+
+/* Setup global css values: */
+body {
+    font-family: "72";
+    background-color: var(--sapBackgroundColor, #f4f4f4);
+    color: var(--sapTextColor,#32363a);
+}
+
+/* Import the theme: */
+@import "@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/css_variables.css";
+
+
+/* Import the 72 font with different weights and assign it to the HTML body element: */
+@font-face {
+    font-family: "72";
+    src: url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Regular.woff") format("woff"),
+         url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "72";
+    src: url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Bold.woff") format("woff"),
+         url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Bold.woff2") format("woff2");
+    font-weight: 500 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "72";
+    src: url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Light.woff") format("woff"),
+         url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_base_fiori/fonts/72-Light.woff2") format("woff2");
+    font-weight: 100 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SAP-icons";
+    src: url("../node_modules/@sap-theming/theming-base-content/content/Base/baseLib/sap_fiori_3/fonts/SAP-icons.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
