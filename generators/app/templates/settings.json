@@ -3,5 +3,8 @@
         "**/node_modules/": true,
         "**/.cache/": true,
         "**/.vscode/": true
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
     }
 }

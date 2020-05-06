@@ -10,7 +10,7 @@ module.exports = class extends Generator {
                 message: "Human-readable app name (e.g. for page title)",
                 default: this.appname
             },
-			{
+            {
                 name: "useTypescript",
                 type: "confirm",
                 message: "Would you like to use Typescript?",
@@ -28,15 +28,16 @@ module.exports = class extends Generator {
 
         this._copy("index.js", "src/index.js");
         this._copy("index.css", "src/index.css");
-		
-		if (this.answers.useTypescript) {
-			this._copy("app.tsx", "src/app.tsx");
-			this._copy("tsconfig.json", "tsconfig.json");
-		} else {
-			this._copy("app.jsx", "src/app.jsx");
-			this._copy("app.jsx", "src/app.jsx");
-		}
-		
+
+        if (this.answers.useTypescript) {
+            this._copy("app.tsx", "src/app.tsx");
+            this._copy("tsconfig.json", "tsconfig.json");
+            this._copy(".eslintrc.ts.json", ".eslintrc.json");
+        } else {
+            this._copy("app.jsx", "src/app.jsx");
+            this._copy(".eslintrc.json", ".eslintrc.json");
+        }
+
         this._copy("themesReadme.md", "themes/Readme.md");
         this._copy("_gitignore", ".gitignore");
         this._copy("README.md", "README.md");
@@ -44,21 +45,40 @@ module.exports = class extends Generator {
 
         this._extendPackageJsonWithScripts({
             start: "parcel public/index.html",
-            build: "parcel build public/index.html"
+            build: "npm run lint && parcel build public/index.html",
+            lint: this.answers.useTypescript ? "eslint src/**/*.tsx" : "eslint src/**/*.jsx"
         });
     }
 
     install() {
-        this.npmInstall([
+        const deps = [
+            "eslint",
+            "eslint-plugin-import",
+            "eslint-plugin-node",
+            "eslint-plugin-promise",
+            "eslint-plugin-react",
+            "eslint-plugin-prettier",
+            "eslint-config-prettier",
+            "prettier",
             "parcel-bundler",
             "react",
             "react-dom",
             "fundamental-react",
-            "@sap-theming/theming-base-content"],
-            ["--save-dev"]);
-    }
+            "@sap-theming/theming-base-content"
+        ];
 
-    end() {
+        const tsDeps = [
+            "typescript",
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser"
+        ]
+
+        const jsDeps = [
+            "prop-types"
+        ]
+
+        this.npmInstall(deps.concat(this.answers.useTypescript ? tsDeps : jsDeps),
+            { 'save-dev': true });
     }
 
     _maybeCreatePackageJson() {
